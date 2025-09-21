@@ -18,10 +18,18 @@ class FornecedorController extends Controller
     {
         $q = $request->get('q', '');
 
+        $validated = $request->validate([
+            'q'      => 'nullable|string|max:255',
+            'page'   => 'nullable|integer|min:1',
+            'limit'  => 'nullable|integer|min:1|max:100',
+        ]);
+
+        $q     = $validated['q'] ?? '';
+        $limit = $validated['limit'] ?? 10;
+
         $fornecedores = Fornecedor::where('nome', 'LIKE', "%{$q}%")
             ->orderByDesc('created_at')
-            ->limit(50)
-            ->get();
+            ->paginate($limit);
 
         return response()->json($fornecedores);
     }
