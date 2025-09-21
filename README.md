@@ -13,7 +13,7 @@ Este projeto tem como objetivo migrar um sistema legado para uma aplicação Lar
 
 1. Clone o repositório:
    ```bash
-   git clone <url-do-repositorio>
+   git clone https://github.com/daniellvaz/teste-dev-pleno-jml.git
    cd nome-do-projeto/api
    
 2. Altere o nome do arquivo .env.example para .env e ensira as credenciais do seu banco de dados mysql:
