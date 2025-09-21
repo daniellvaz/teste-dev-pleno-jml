@@ -3,30 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fornecedor;
+use App\Services\FornecedorService;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\FornecedorResource;
 use App\Http\Requests\IndexFornecedorRequest;
 use App\Http\Requests\StoreFornecedorRequest;
 
 class FornecedorController extends Controller
 {
+    public function __construct(
+        protected FornecedorService $fornecedorService
+    ) {}
+
     public function store(StoreFornecedorRequest $request)
     {
-        $fornecedor = Fornecedor::create($request->validated());
-
-        return response()->json($fornecedor, 201);
+        $fornecedor = $this->fornecedorService->create($request->validated());
+        return new FornecedorResource($fornecedor);
     }
 
     public function index(IndexFornecedorRequest $request)
     {
-        $q = $request->get('q', '');
-        $validated = $request->validated();
-
-        $q     = $validated['q'] ?? '';
-        $limit = $validated['limit'] ?? 10;
-
-        $fornecedores = Fornecedor::where('nome', 'LIKE', "%{$q}%")
+        $fornecedores = Fornecedor::query()
+            ->when($request->q, fn($q) => $q->where('nome', 'like', "%{$request->q}%"))
+            ->when($request->email, fn($q) => $q->where('email', $request->email))
+            ->when($request->cnpj, fn($q) => $q->where('cnpj', $request->cnpj))
             ->orderByDesc('created_at')
-            ->paginate($limit);
+            ->paginate($request->limit ?? 15);
 
-        return response()->json($fornecedores);
+        return FornecedorResource::collection($fornecedores);
     }
 }

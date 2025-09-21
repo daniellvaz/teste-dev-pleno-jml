@@ -22,9 +22,11 @@ class IndexFornecedorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'q'      => 'nullable|string|max:255',
-            'page'   => 'nullable|integer|min:1',
-            'limit'  => 'nullable|integer|min:1|max:100',
+            'nome'  => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'cnpj'  => 'nullable|string|max:255',
+            'page'  => 'nullable|integer|min:1',
+            'limit' => 'nullable|integer|min:1|max:100',
         ];
     }
 }
