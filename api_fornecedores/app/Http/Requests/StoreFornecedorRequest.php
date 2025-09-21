@@ -22,7 +22,9 @@ class StoreFornecedorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nome'  => 'required|string|min:3|max:255',
+            'cnpj'  => 'required|digits:14|unique:fornecedores,cnpj',
+            'email' => 'nullable|email',
         ];
     }
 }
