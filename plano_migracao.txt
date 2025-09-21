@@ -1,0 +1,56 @@
+Plano de Migração do Sistema Legado para Laravel Moderno
+Objetivo
+
+Migrar o sistema legado de fornecedores para uma aplicação Laravel moderna, mantendo a integridade dos dados, implementando boas práticas de desenvolvimento e garantindo continuidade das operações.
+
+Estratégia de Migração
+
+Análise de Dados e Campos
+
+Identificar os campos existentes na base legada, como nome, email e cnpj.
+
+Mapear tipos de dados correspondentes no Laravel (ex.: string, integer, date).
+
+Validar consistência e qualidade dos dados, detectando duplicidades e formatos inválidos, especialmente no CNPJ e e-mail.
+
+Validações
+
+Criar regras de validação no Laravel para cada campo:
+
+nome: obrigatório, string, tamanho máximo definido.
+
+email: obrigatório, formato válido, único.
+
+cnpj: obrigatório, formato válido, único, sanitização (remoção de pontos, traços e barras).
+
+Implementar tratamento de erros padronizado para respostas JSON.
+
+Estratégia Incremental
+
+Etapa 1: Configuração da estrutura Laravel (models, controllers, migrations, resources) sem migração de dados.
+
+Etapa 2: Migração inicial de dados críticos (fornecedores ativos) para validar o processo.
+
+Etapa 3: Testes de consistência de dados e funcionalidade das rotas (GET /fornecedores e POST /fornecedores).
+
+Etapa 4: Migração completa do restante dos dados, com logs de erros e tratamento de duplicidades.
+
+Etapa 5: Descomissionamento gradual do sistema legado, mantendo fallback durante transição.
+
+Considerações Técnicas
+
+Uso de Laravel Resources para padronizar respostas JSON.
+
+Uso de Service Layer para centralizar regras de negócio (como sanitização de CNPJ e controle de transações).
+
+Testes automatizados cobrindo criação de fornecedores, listagem e validações.
+
+Planejamento para futuras melhorias, como filtros, paginação e integração com outros módulos.
+
+Benefícios
+
+Sistema moderno, seguro e escalável.
+
+Validações consistentes e integridade de dados garantida.
+
+Estrutura preparada para expansão futura e integração com novos serviços.

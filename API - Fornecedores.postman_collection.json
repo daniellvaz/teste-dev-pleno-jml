@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "b6dcf4bc-07de-4f36-a500-431afdb64cfa",
+		"name": "API - Fornecedores",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30938242",
+		"_collection_link": "https://daniel-pessoal.postman.co/workspace/Projetos-pessoais~28622aa7-0ed7-40f2-8958-ccb4373250ac/collection/30938242-b6dcf4bc-07de-4f36-a500-431afdb64cfa?action=share&source=collection_link&creator=30938242"
+	},
+	"item": [
+		{
+			"name": "Index",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/fornecedores",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"fornecedores"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "100",
+							"disabled": true
+						},
+						{
+							"key": "nome",
+							"value": "Exemplo",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "exemplo@email.com",
+							"disabled": true
+						},
+						{
+							"key": "cnpj",
+							"value": "12345678901234",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Exemplo\",\r\n    \"cnpj\": \"12345678901234\",\r\n    \"email\": \"exemplo@email.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/fornecedores",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"fornecedores"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		}
+	]
+}
