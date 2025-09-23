@@ -59,12 +59,23 @@
 		},
 		{
 			"name": "Store",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nome\": \"Exemplo\",\r\n    \"cnpj\": \"12345678901234\",\r\n    \"email\": \"exemplo@email.com\"\r\n}",
+					"raw": "{\r\n    \"nome\": \"Teste\",\r\n    \"cnpj\": \"82.445.904/0001-95\",\r\n    \"email\": \"teste2@email.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
