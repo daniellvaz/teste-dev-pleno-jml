@@ -15,7 +15,7 @@ class FornecedorTest extends TestCase
     {
         $response = $this->postJson('/api/fornecedores', [
             'nome'  => 'Teste de fornecedor',
-            'cnpj'  => '12345678000190',
+            'cnpj'  => '12.345.678/0001-90',
             'email' => 'teste@email.com',
         ]);
 
